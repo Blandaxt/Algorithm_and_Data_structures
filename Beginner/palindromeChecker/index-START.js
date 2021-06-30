@@ -7,7 +7,17 @@ e.g palindromeChecker('racecar') // will return true
 
 
 function palindromeChecker(text) {
-    v// Code goes here
+    // Code goes here
+
+    console.log("Text: ", text)
+
+    var reversedText = text.toLowerCase()
+    .split('').reverse().join('')
+
+    console.log("Reversed text: ", reversedText)
+
+    return text === reversedText
+
 }
 
 
