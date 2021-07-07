@@ -13,7 +13,15 @@ test('returns the index of the specified number', () => {
   expect(whereIBelong([10, 20, 30, 40, 50], 30)).toEqual(2);
 });
 
+test('returns the index of the specified number', () => {
+  expect(whereIBelong([10, 20, 30, 40, 50], 90)).toEqual(5);
+});
+
 test('returns the index even with an empty array', () => {
   expect(whereIBelong([], 1)).toEqual(0);
+});
+
+test('returns the index even with an empty array', () => {
+  expect(whereIBelong([], 99)).toEqual(0);
 });
 

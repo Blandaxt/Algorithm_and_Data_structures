@@ -9,6 +9,17 @@ don't. E.g
 
 function isAnagram(stringA, stringB) {
     // Code goes here
+
+    console.log("String A: \n", stringA, "\nString B: \n", stringB)
+
+    const sanitizeString = function (str) {
+        return str.toLowerCase().replace(/[^a-z\d]/g, '').split('').sort().join('');
+    }
+
+    console.log("Santized string A: \n", sanitizeString(stringA), "\nSantized string B: \n", sanitizeString(stringB))
+
+    return sanitizeString(stringA) == sanitizeString(stringB)
+
 }
 
 

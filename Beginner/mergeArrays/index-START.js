@@ -6,16 +6,30 @@
 
 function mergeArrays(...arrays) {
 
+    console.log("Arrays: \n", arrays)
+
     let jointArray = []
     
     arrays.forEach(array => {
         jointArray = [...jointArray, ...array]
     });
 
-    return [...new Set([...jointArray])]
+    const result = [...new Set([...jointArray])]
 
+    console.log("\n Result: ", result)
+
+    return result
     
 }
+
+// function mergeArrays() {
+
+//     let arrays = Array.from(arguments);
+
+//     console.log(arrays)
+
+//    // some more code here
+// }
 
 
 module.exports = mergeArrays
