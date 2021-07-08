@@ -110,35 +110,135 @@ When to use:
 
 /* Example */
 
-class Node {
+// class Node {
 
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
-}
+//     constructor(value) {
+//         this.value = value;
+//         this.next = null;
+//     }
+// }
 
-class SinglyLinkedList {
+// class SinglyLinkedList {
 
-    constructor() {
+//     constructor() {
+//         this.head = null;
+//         this.tail = null;
+//         this.length = 0;
+//     }
+// }
+
+class LinkedList {
+    constructor(...values) {
         this.head = null;
-        this.tail = null;
         this.length = 0;
+        this.addToHead(...values);
+    }
+    
+    _addSingleItemToHead(value) {
+        const newNode = { value };
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length++;
+    }
+
+    addToHead(...values) {
+        values.forEach(value => this._addSingleItemToHead(value));
+        return this;
+    }
+    
+    removeFromHead() {
+        if (this.length === 0) {
+            return undefined;
+        }
+        
+        const value = this.head.value;
+        this.head = this.head.next;
+        this.length--;
+        
+        return value;
+    }
+    
+    find(val) {
+        let thisNode = this.head;
+        
+        while(thisNode) {
+            if(thisNode.value === val) {
+                return thisNode;
+            }
+            
+            thisNode = thisNode.next;
+        }
+        
+        return thisNode;
+    }
+    
+    remove(val) {
+        if(this.length === 0) {
+            return undefined;
+        }
+        
+        if (this.head.value === val) {
+            return this.removeFromHead();
+        }
+        
+        let previousNode = this.head;
+        let thisNode = previousNode.next;
+        
+        while(thisNode) {
+            if(thisNode.value === val) {
+                break;
+            }
+            
+            previousNode = thisNode;
+            thisNode = thisNode.next;
+        }
+        
+        if (thisNode === null) {
+            return undefined;
+        }
+        
+        previousNode.next = thisNode.next;
+        this.length--;
+        return this;
     }
 }
 
-const list = {
-    head: {
-        value: 12,
-        next: {
-            value: 99,
-            next: {
-                value: 37,
-                next: null
-            }
-        }
-    }
-};
+
+
+let values = new LinkedList('Hello!', 2, 3, {}, [], "We got it!", 99)
+
+console.log("Values: \n", values)
+
+console.log("Values: \n", values.head)
+
+console.log("Values: \n", values.head.next)
+
+console.log("Values: \n", values.head.next.next)
+
+console.log("Values: \n", values.head.next.next.next)
+
+console.log("Values: \n", values.head.next.next.next.next)
+
+// const list = {}
+
+// const list = {
+//     head: {
+//         value: 12,
+//         next: {
+//             value: 99,
+//             next: {
+//                 value: 37,
+//                 next: null
+//             }
+//         }
+//     }
+// };
+
+// const list = {
+//     head: → { value: 12, next: ⤵ }
+//             { value: 99, next: ⤵ }
+//     tail: → { value: 37, next: ∅ }
+// };
 
 /* 
 
@@ -149,5 +249,7 @@ https://medium.com/nerd-for-tech/linked-lists-a-quick-look-into-data-structures-
 https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571
 
 https://www.thecrazyprogrammer.com/2016/11/advantages-disadvantages-linked-list.html
+
+https://www.freecodecamp.org/news/implementing-a-linked-list-in-javascript/
 
 */
