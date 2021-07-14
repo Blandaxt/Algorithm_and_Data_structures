@@ -47,45 +47,182 @@
 
 // Start of the function
 
+// function twoSum(nums, target) {
+
+//     console.log("Array: \n", nums, "\n Array length: \n", nums.length, "\n Target: \n", target)
+
+//     if(nums.length === 0){
+
+//         console.log("\n Undefined ")
+
+//         return undefined
+//     }
+
+//     const start = Date.now()
+
+//     console.log('starting timer...');
+
+//     let compareTarget = 0;
+
+//     let array = nums
+
+//     // let accumelator = 0;
+
+//     // let secondAccumelator = 1;
+
+//     let stopper = true;
+
+//     setTimeout(() => {
+//         const millis = Date.now() - start;
+
+//         stopper = false;
+
+//     console.log(`\n seconds elapsed = ${Math.floor(millis / 1000)}`, "\n while loop failed or function ran for too long.");
+//     // expected output: seconds elapsed = 2
+    
+//      }, 2000);
+
+//      for( const number of array){
+
+//         for(let i = 1; i < array.length ; i++){
+
+//             console.log("\n forloop1: \n", number, "\n forloop2: \n", array[i])
+
+//            compareTarget = number + array[i] 
+
+//            if( array.indexOf(number) != i){
+
+//                 console.log("\n Comparing ...")
+
+//                  if( compareTarget == target ) {
+
+//                     console.log("\n forloop1: \n", number, "\n forloop2: \n", array[i])
+
+//                         let result = [ array.indexOf(number), i ]
+            
+//                         console.log("\n Result: \n", result, "\n Match Found!");
+            
+//                         return result;
+            
+//                 }
+
+//                 console.log("\n False Match ...")
+
+//              }
+
+//         }
+
+//     }
+
+     // accumelator < nums.length - 1 
+
+    // while( accumelator < nums.length ){
+
+    //     compareTarget = nums[accumelator] + nums[secondAccumelator]
+
+    //     if( compareTarget == target ) {
+
+    //         let result = [ nums.indexOf(nums[accumelator]), nums.indexOf(nums[secondAccumelator]) ]
+
+    //         console.log("\n Result: \n", result);
+
+    //         return result;
+
+    //     }
+
+        
+
+    //     if( secondAccumelator == nums.length - 1){
+
+    //         accumelator++
+
+    //         secondAccumelator = accumelator + 1
+    //     }
+
+    //     secondAccumelator++
+
+    //     console.log("\n element: \n", nums[secondAccumelator])
+        
+    // }
+
+
+//     console.log("\n target cannot be reached")
+    
+//     return "target cannot be reached"
+    
+// };
+
 function twoSum(nums, target) {
 
-    console.log("Array: \n", nums, "\n Target: \n", target)
+    console.log("Array: \n", nums, "\n Array length: \n", nums.length, "\n Target: \n", target)
 
     if(nums.length === 0){
+
+        console.log("\n Undefined ")
 
         return undefined
     }
 
+    const start = Date.now()
+
+    console.log('starting timer...');
+
     let compareTarget = 0;
 
-    let accumelator = 0;
+    let array = nums
 
-    let secondAccumelator = 1;
+    // let accumelator = 0;
 
-    while( accumelator < nums.length - 1 ){
+    // let secondAccumelator = 1;
 
-        compareTarget = nums[accumelator] + nums[secondAccumelator]
+    let stopper = true;
 
-        if( compareTarget == target ) {
+    setTimeout(() => {
+        const millis = Date.now() - start;
 
-            let result = [ nums.indexOf(nums[accumelator]), nums.indexOf(nums[secondAccumelator]) ]
+        stopper = false;
 
-            console.log("\n Result: \n", result);
+    console.log(`\n seconds elapsed = ${Math.floor(millis / 1000)}`, "\n while loop failed or function ran for too long.");
+    // expected output: seconds elapsed = 2
+    
+     }, 2000);
 
-            return result;
+    //  for( const number of array){
+
+        for(let i = 0; i < array.length ; i++){
+
+           compareTarget = target - array[i]
+
+           console.log("\n Target sub result: \n", compareTarget, "\n Target: \n", target, "\n Array Number: \n", array[i])
+
+           console.log("\n Analyzing ...")
+
+            if( array.includes(compareTarget)){
+
+                if( array.indexOf(compareTarget) != i || array.indexOf(compareTarget, i + 1) != -1 ){
+
+                    // if( compareTarget == target ) {
+
+                        console.log("\n Index1: \n", i, "\n Index2: \n", array.indexOf(compareTarget, i + 1))
+
+                            let result = [ i, array.indexOf(compareTarget, i + 1) ]
+                
+                            console.log("\n Result: \n", result, "\n Match Found!");
+                
+                            return result;
+                
+                    // }
+
+                   
+
+                }
+
+            }    
+
+            console.log("\n False Match ...")
 
         }
 
-        if( secondAccumelator == nums.length - 1){
-
-            accumelator++
-
-            secondAccumelator = accumelator + 1
-        }
-
-        secondAccumelator++
-        
-    }
 
     console.log("\n target cannot be reached")
     
